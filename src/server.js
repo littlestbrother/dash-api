@@ -35,6 +35,10 @@ app.get('/api/_version', (req, res) => {
     res.json({ version: pkg.version });
 });
 
+app.get('/api/_health', (req, res) => {
+    res.json({ status: 'OK' });
+});
+
 app.use('/api', routes);
 
 app.listen(PORT);
