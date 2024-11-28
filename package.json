@@ -1,14 +1,16 @@
 {
   "name": "dash-api",
+  "namespace": "serverless",
   "version": "0.0.0",
   "main": "index.js",
   "repository": "https://github.com/littlestbrother/dash-api",
   "author": "aaron@sparrow-sw.dev",
   "license": "WTFPL",
   "scripts": {
-    "env:assign": "AWS_PROFILE=aaron AWS_REGION=us-east-1 NODE_ENV=production node -e 'require(\"./scripts/assign.env\").main()'",
-    "env:load": "AWS_PROFILE=aaron AWS_REGION=us-east-1 NODE_ENV=production node scripts/load.env",
-    "deploy": "NODE_ENV=production node scripts/load.env.js && sls create_domain -s production && sls deploy -s production",
+    "start": "nodemon .",
+    "env:assign": "AWS_PROFILE=aaron AWS_REGION=us-east-1 node -e 'require(\"./scripts/assign.env\").main()'",
+    "env:load": "AWS_PROFILE=aaron AWS_REGION=us-east-1 node scripts/load.env",
+    "deploy": "node scripts/load.env.js && sls create_domain -s production && sls deploy -s production",
     "logs": "serverless logs -f index  -s development -r us-east-1 --aws-profile aaron -t",
     "lint": "eslint .",
     "fix": "eslint --fix ."
@@ -17,6 +19,7 @@
     "@kb/aws": "github:https://github.com/krashidbuilt/aws-js-library.git",
     "@kb/common": "github:https://github.com/krashidbuilt/common-js-library.git",
     "axios": "^1.7.8",
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "express-async-errors": "^3.1.1",
     "joi": "^17.13.3",
