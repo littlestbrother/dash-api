@@ -23,6 +23,7 @@
     "express": "^4.21.1",
     "express-async-errors": "^3.1.1",
     "joi": "^17.13.3",
+    "nodemon": "^3.1.7",
     "serverless-deployment-bucket": "^1.6.0",
     "serverless-domain-manager": "^8.0.0",
     "serverless-dotenv-plugin": "^6.0.0",

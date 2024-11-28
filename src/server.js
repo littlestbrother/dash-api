@@ -8,7 +8,7 @@ const routes = require('./routes');
 // get env vars & setup mysql
 const { PORT } = require('./constants');
 
-const Logger = require('@fgt/common/utils/logger');
+const Logger = require('@kb/common/utils/logger');
 const logger = new Logger(__filename);
 
 const app = express();
