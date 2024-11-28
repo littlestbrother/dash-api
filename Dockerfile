@@ -27,4 +27,4 @@ EXPOSE $PORT
 
 HEALTHCHECK --timeout=10s CMD curl -f http://localhost:$PORT/api/_health || exit 1
 
-CMD [ "yarn", "start:development" ]
+CMD [ "yarn", "start" ]
