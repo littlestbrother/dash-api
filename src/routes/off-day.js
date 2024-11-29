@@ -1,10 +1,16 @@
 const express = require('express');
 
-// const services = require('../../services');
+const services = require('../services');
+
 // const { validator } = require('../../middleware/model');
 // const models = require('../../models/private/user');
 
 const router = express.Router();
+
+router.get('/upcoming', async (req, res) => {
+    const upcoming = await services.off_day.getUpcoming();
+    res.json(upcoming);
+});
 
 // router.post('/', validator(models), async (req, res) => {
 router.post('/', (req, res) => {

@@ -1,10 +1,15 @@
 const express = require('express');
 
-// const services = require('../../services');
+const services = require('../services');
 // const { validator } = require('../../middleware/model');
 // const models = require('../../models/private/user');
 
 const router = express.Router();
+
+router.get('/eligibility', (req, res) => {
+    const { tzOffset } = req.query;
+    res.json(services.clock_in.isEligible({ tzOffset }));
+});
 
 // router.post('/', validator(models), async (req, res) => {
 router.post('/', (req, res) => {
