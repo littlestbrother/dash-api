@@ -1,4 +1,4 @@
-const joi = require('joi');
+const Joi = require('joi');
 
 const Logger = require('@kb/common/utils/logger');
 
@@ -18,17 +18,14 @@ const options = {
 };
 
 const validate = (data, schema) => {
-    const result = joi.validate(data, schema, options);
+    logger.extra({ data });
+    const result = Joi.validate(data, schema, options);
     if (result.error) {
         const { details } = result.error;
-        throw BAD_REQUEST('ValidationError', details);
+        throw BAD_REQUEST('ValidationError', JSON.stringify(details));
     }
 
     return result.value;
-};
-
-module.exports = {
-    validate
 };
 
 const validator = (models) => (req, res, next) => {
@@ -49,5 +46,6 @@ const validator = (models) => (req, res, next) => {
 };
 
 module.exports = {
+    validate,
     validator
 };

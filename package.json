@@ -23,7 +23,7 @@
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "express-async-errors": "^3.1.1",
-    "joi": "^17.13.3",
+    "joi": "14.3.1",
     "nodemon": "^3.1.7",
     "serverless-deployment-bucket": "^1.6.0",
     "serverless-domain-manager": "^8.0.0",

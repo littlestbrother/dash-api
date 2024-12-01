@@ -13,9 +13,9 @@ router.get('/upcoming', async (req, res) => {
 });
 
 router.post('/', validator(models), async (req, res) => {
-    const { month, date, year } = req.body;
+    const { month, day, year } = req.body;
 
-    res.json(await services.downtime.createUpcoming({ month, date, year }));
+    res.json(await services.downtime.createUpcoming({ month, day, year }));
 });
 
 module.exports = router;

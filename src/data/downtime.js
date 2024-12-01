@@ -7,24 +7,23 @@ const { DYNAMO_DOWNTIME_TABLE } = require('../constants');
 const db = new Dynamo(DYNAMO_DOWNTIME_TABLE);
 const logger = new Logger(__filename);
 
-const getUpcoming = async ({ month, date, year }) => {
-    logger.info({ month, date, year });
+const getAll = async () => {
+    logger.info();
     // TODO: remove old entries
-    const all = await db.getAll();
-    return all;
+    return await db.getAll();
 };
 
-const create = async ({ month, date, year }) => {
-    logger.info({ month, date, year });
-    
-    const id = `${month}-${date}-${year}`;
+const create = async ({ month, day, year }) => {
+    logger.info({ month, day, year });
+
+    const id = `${month}-${day}-${year}`;
 
     const oneMonthExpiryInSeconds = 60 * 60 * 24 * 30;
 
-    return await db.createOneExpiring(id, null, oneMonthExpiryInSeconds);
+    return await db.createOneExpiring(id, { month, day, year }, oneMonthExpiryInSeconds);
 };
 
 module.exports = {
-    getUpcoming,
+    getAll,
     create
 };

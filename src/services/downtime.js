@@ -1,4 +1,5 @@
 const Logger = require('@kb/common/utils/logger');
+const data = require('../data');
 
 const logger = new Logger(__filename);
 
@@ -7,8 +8,10 @@ const logger = new Logger(__filename);
 
 const LIST_LENGTH = 7;
 
-const getUpcoming = () => {
+const getUpcoming = async () => {
     logger.info();
+
+    const downtime = await data.downtime.getAll();
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -25,7 +28,14 @@ const getUpcoming = () => {
             const dayName = days[date.getDay()];
             const dayNum = date.getDate();
             const monthName = months[date.getMonth()];
-            upcoming.push({ iso: date, dayName, dayNum, monthName });
+            const monthNum = date.getMonth() + 1;
+
+            const takenOff = downtime.some((d) => {
+                const { month, day, year } = d;
+                return month === monthNum && day === dayNum && year === date.getFullYear();
+            });
+
+            upcoming.push({ iso: date, dayName, dayNum, monthName, monthNum, takenOff });
         }
 
     }
@@ -33,9 +43,10 @@ const getUpcoming = () => {
     return upcoming;
 };
 
-const createUpcoming = ({ month, date, year }) => {
-    logger.info({ month, date, year });
+const createUpcoming = async ({ month, day, year }) => {
+    logger.info({ month, day, year });
 
+    return await data.downtime.create({ month, day, year });
 };
 
 module.exports = {

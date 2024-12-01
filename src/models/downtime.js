@@ -3,13 +3,12 @@ const Joi = require('joi');
 module.exports = {
 
     post: {
-
         ['/']: Joi.object({
-            body: Joi.object({
-                month: Joi.string().required(),
-                date: Joi.string().required(),
-                year: Joi.string().required()
-            }).unknown(true)
+            body: {
+                month: Joi.number().required(),
+                day: Joi.number().required(),
+                year: Joi.number().required()
+            }
         }).unknown(true)
     },
 
