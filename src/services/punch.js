@@ -2,9 +2,7 @@ const Logger = require('@kb/common/utils/logger');
 
 const logger = new Logger(__filename);
 
-const MINIMUM_HOUR_AM = 7;
-const MAXIMUM_HOUR_AM = 9;
-const MAXIMUM_MINUTE_AM = 30;
+const { MINIMUM_HOUR_AM, MAXIMUM_HOUR_AM, MAXIMUM_MINUTE_AM } = require('../constants');
 
 const inTimeRange = ({ userHour, userMinute }) => {
     logger.info({ userHour, userMinute });

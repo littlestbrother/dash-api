@@ -16,6 +16,7 @@
     "fix": "eslint --fix ."
   },
   "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.699.0",
     "@kb/aws": "github:https://github.com/krashidbuilt/aws-js-library.git",
     "@kb/common": "github:https://github.com/krashidbuilt/common-js-library.git",
     "axios": "^1.7.8",

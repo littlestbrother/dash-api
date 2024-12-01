@@ -1,16 +1,38 @@
 # dash-api
 
 TODO:
-<!-- # POST clock-in -->
-- post image to clock-in route
-- get timestamp and location of clock-in image
+<!-- # POST punch -->
+- post image to punch route
+- get timestamp and location of punch image
 - verify
-- record clock-in
+- record punch
 
-<!-- # POST/DELETE off-days -->
-- create/delete off-day
+<!-- # POST downtimes -->
+- create/delete downtime
 
 <!-- severless CRON jobs -->
-- runs every weekday at 9:30am
-- check if today is an off-day
-- if so then ping beeminder to charge me
+beginning of week task:
+- replenish get out of jail free cards
+
+exercise check:
+- runs every weekday at 7:45/8:45 AM (daylights savings change)
+- stop check if last punch was more than 24 hours ago (in case of emergency)
+- check if today is an downtime
+- check for punch
+- use up get out of jail free card if possible
+
+work check:
+- runs every weekday at 9:45/10:45 AM (daylights savings change)
+- stop check if last punch was more than 24 hours ago (in case of emergency)
+- check if today is an downtime
+- check for punch
+- use up get out of jail free card if possible
+
+mid-day work check:
+- runs every weekday at 2:45/3:45 PM (daylights savings change)
+- stop check if last punch was more than 24 hours ago (in case of emergency)
+- check if today is an downtime
+- check for punch
+- use up get out of jail free card if possible
+
+<!-- setup AWS cognito -->

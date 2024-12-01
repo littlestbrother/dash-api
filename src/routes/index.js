@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-router.use('/clock-in', require('./clock-in'));
-router.use('/off-day', require('./off-day'));
+router.use('/punch', require('./punch'));
+router.use('/downtime', require('./downtime'));
 
 module.exports = router;
